@@ -51,7 +51,7 @@ resource "aws_instance" "EC2_server2" {
             #!/bin/bash
             yum update -y
             yum install gcc telnet nc vim -y
-            hostnamectl set-hostname server1.mydomain.local
+            hostnamectl set-hostname server2.mydomain.local
             echo "ClientAliveInterval 120" >> /etc/ssh/sshd_config
             systemctl restart sshd
             EOF
