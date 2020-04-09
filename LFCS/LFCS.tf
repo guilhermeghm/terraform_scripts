@@ -13,7 +13,7 @@ provider "aws" {
 ##################################################################
 
 resource "aws_instance" "EC2_server1" {
-  ami           = "ami-096782d2a9225fe7a"
+  ami           = "ami-0a3c2e3ecfcddf2d1"
   instance_type = "t3.medium"
   vpc_security_group_ids = ["sg-7552d20f"]
   subnet_id = "subnet-d8148ebf"
@@ -36,7 +36,7 @@ resource "aws_instance" "EC2_server1" {
 
 
 resource "aws_instance" "EC2_server2" {
-  ami           = "ami-096782d2a9225fe7a"
+  ami           = "ami-0a3c2e3ecfcddf2d1"
   instance_type = "t3.medium"
   vpc_security_group_ids = ["sg-7552d20f"]
   subnet_id = "subnet-d8148ebf"
