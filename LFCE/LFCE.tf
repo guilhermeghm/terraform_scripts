@@ -31,6 +31,7 @@ resource "aws_instance" "EC2_server1" {
             hostnamectl set-hostname server1.example.local
             echo "ClientAliveInterval 120" >> /etc/ssh/sshd_config
             systemctl restart sshd
+            echo "172.31.7.191   ipa.example.local" >> /etc/hosts
             EOF
 }
 
@@ -54,5 +55,6 @@ resource "aws_instance" "EC2_server2" {
             hostnamectl set-hostname server2.example.local
             echo "ClientAliveInterval 120" >> /etc/ssh/sshd_config
             systemctl restart sshd
+            echo "172.31.7.191   ipa.example.local" >> /etc/hosts
             EOF
 }
