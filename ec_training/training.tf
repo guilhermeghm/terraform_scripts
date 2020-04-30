@@ -8,7 +8,6 @@ provider "aws" {
   profile                 = "default"
 }
 
-
 ##################################################################
 # Cluster creation.
 ##################################################################
@@ -25,7 +24,6 @@ resource "aws_elasticache_replication_group" "ec-cluster-off" {
   subnet_group_name             = "eu-west-1"
   engine                        = "redis"
 }
-
 
 resource "aws_elasticache_replication_group" "ec-cluster-auth" {
   replication_group_id          = "ec-cluster-auth"
@@ -74,20 +72,20 @@ resource "aws_elasticache_cluster" "memcached" {
 ##################################################################
 
 resource "aws_eip_association" "eip_assoc" {
-  instance_id   = "${aws_instance.EC2client.id}"
+  instance_id   = aws_instance.EC2client.id
   allocation_id = "eipalloc-0363463ab8366517f"
 }
 
 resource "aws_instance" "EC2client" {
-  ami           = "ami-0bbc25e23a7640b9b"
-  instance_type = "m5.large"
+  ami                    = "ami-0bbc25e23a7640b9b"
+  instance_type          = "m5.large"
   vpc_security_group_ids = ["sg-8fe0b5f7"]
-  subnet_id = "subnet-697cda32"
-  key_name = "awssupport"
+  subnet_id              = "subnet-697cda32"
+  key_name               = "awssupport"
   tags = {
-    Name = "EC Training"
+    Name        = "EC Training"
     auto-delete = "no"
-    auto-stop = "no"
+    auto-stop   = "no"
   }
 
   user_data = <<-EOF
@@ -103,5 +101,7 @@ resource "aws_instance" "EC2client" {
             echo "export PATH"
             echo "ClientAliveInterval 120" >> /etc/ssh/sshd_config
             systemctl restart sshd
-            EOF
+EOF
+
 }
+

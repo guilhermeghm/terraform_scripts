@@ -4,7 +4,6 @@ provider "aws" {
   profile                 = "default"
 }
 
-
 resource "aws_elasticache_replication_group" "ec-single" {
   replication_group_id          = "ec-single"
   replication_group_description = "Cluster single node"
@@ -31,7 +30,6 @@ resource "aws_elasticache_replication_group" "ec-cluster-off" {
   engine                        = "redis"
   snapshot_window               = "01:00-02:00"
 }
-
 
 resource "aws_elasticache_replication_group" "ec-cluster-on" {
   replication_group_id          = "ec-cluster-on"
@@ -76,3 +74,4 @@ resource "aws_elasticache_cluster" "memcached" {
   subnet_group_name    = "eu-west-1"
   port                 = 11211
 }
+
